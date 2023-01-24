@@ -16,4 +16,11 @@ describe(LibComponent.name, () => {
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
   });
+
+  it('should have styles from preprocessor', () => {
+    cy.mount(LibComponent, {
+      imports: [CommonModule, MatIconModule, MatCardModule, HttpClientModule],
+    });
+    cy.get('p').should('have.css', 'color', 'rgb(0, 0, 255)');
+  });
 });

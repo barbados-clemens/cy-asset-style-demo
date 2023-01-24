@@ -15,4 +15,10 @@ describe(AppComponent.name, () => {
       expect(img.naturalWidth).to.be.greaterThan(0);
     });
   });
+  it('should have styles from preprocessor', () => {
+    cy.mount(AppComponent, {
+      imports: [HttpClientModule, MatIconModule, MatCardModule, DemoLibModule],
+    });
+    cy.get('p').should('have.css', 'color', 'rgb(255, 192, 203)');
+  });
 });
