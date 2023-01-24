@@ -7,7 +7,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/demo-lib/jest.config.ts",
         "passWithNoTests": true
@@ -21,9 +23,23 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/demo-lib/**/*.ts", "libs/demo-lib/**/*.html"]
+        "lintFilePatterns": [
+          "libs/demo-lib/**/*.ts",
+          "libs/demo-lib/**/*.html"
+        ]
+      }
+    },
+    "component-test": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "libs/demo-lib/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true,
+        "devServerTarget": "demo:build"
       }
     }
   },
